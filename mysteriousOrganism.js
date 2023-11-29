@@ -15,8 +15,32 @@ const returnRandBase = () => {
   
   
   
-  
-  
+  let pAequorFactory = function (specimenNum, bases) {
+  return {
+
+    specimenNum : specimenNum,
+    bases : bases,
+
+
+    mutate() {
+      let basePositionToChange = 0;
+      let baseToChange = '';
+      let randomSingleBase = '';
+      do {
+        basePositionToChange = Math.floor(Math.random() * 15)
+        baseToChange = bases[basePositionToChange];
+        randomSingleBase = returnRandBase();
+      } while (baseToChange === randomSingleBase);       
+      bases[basePositionToChange] = randomSingleBase;
+      return bases;
+    } 
+  };
+};
+
+let testObject = pAequorFactory(2, mockUpStrand());
+console.table(testObject);
+
+console.table(testObject.mutate());
   
   
   
